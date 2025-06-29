@@ -122,6 +122,13 @@ void registrarVenta()
     }
     cout<<"Producto no encontrado. Venta no registrada."<<endl;
 }
+void listarVentas()
+{
+    for(int i=0;i<totalVentas;i++)
+    {
+        cout<<"ID: "<<ventas[i].idVenta<<", Producto: "<<ventas[i].producto<<", Cantidad: "<<ventas[i].cantidad<<", Total: $"<<ventas[i].precioTotal<<endl;
+    }
+}
 
 int main() 
 {
@@ -134,6 +141,7 @@ int main()
         cout<<"D. Actualizar producto\n";
         cout<<"E. Eliminar producto\n";
         cout<<"F. Registrar venta\n";
+        cout<<"G. Listar ventas\n";
         cout<<"S. Salir\n";
         cout<<"Opcion: ";
         cin >> opcion;
@@ -150,6 +158,8 @@ int main()
             case 'E': eliminarProducto(); 
             break;
             case 'F': registrarVenta(); 
+            break;
+             case 'G': listarVentas(); 
             break;
             case 'S': cout<<"Saliendo...\n"; 
             break;
