@@ -129,6 +129,16 @@ void listarVentas()
         cout<<"ID: "<<ventas[i].idVenta<<", Producto: "<<ventas[i].producto<<", Cantidad: "<<ventas[i].cantidad<<", Total: $"<<ventas[i].precioTotal<<endl;
     }
 }
+void calcularTotalVentas()
+{
+    float suma = 0;
+    for(int i=0;i<totalVentas;i++)
+    {
+        suma += ventas[i].precioTotal;
+    }
+    cout<<"Total de ventas: $"<<suma<<endl;
+}
+
 
 int main() 
 {
@@ -142,6 +152,7 @@ int main()
         cout<<"E. Eliminar producto\n";
         cout<<"F. Registrar venta\n";
         cout<<"G. Listar ventas\n";
+        cout<<"H. Total de ventas\n";
         cout<<"S. Salir\n";
         cout<<"Opcion: ";
         cin >> opcion;
@@ -161,6 +172,8 @@ int main()
             break;
              case 'G': listarVentas(); 
             break;
+            case 'H': calcularTotalVentas(); 
+			break;
             case 'S': cout<<"Saliendo...\n"; 
             break;
             default: cout<<"Opcion no valida.\n"; 
