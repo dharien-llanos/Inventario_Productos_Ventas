@@ -6,12 +6,23 @@ const int MAX = 100;
 
 struct Producto 
 {
+
     string nombre;
     float precio;
 };
+struct Venta
+{
+    int idVenta;
+    string producto;
+    int cantidad;
+    float precioTotal;
+};
 
 Producto productos[MAX];
+Venta ventas[MAX];
 int totalProductos=0;
+int totalVentas=0;
+int contadorVentas=0;
 
 void registrarProducto() 
 {
@@ -87,6 +98,30 @@ void eliminarProducto()
     }
     cout<<"Producto no encontrado."<<endl;
 }
+void registrarVenta()
+{
+    string nombre;
+    int cantidad;
+    cout<<"Nombre del producto vendido: ";
+    cin>>ws;
+    getline(cin, nombre);
+    cout<<"Cantidad: ";
+    cin>>cantidad;
+    for(int i=0;i<totalProductos;i++)
+    {
+        if(productos[i].nombre==nombre)
+        {
+            ventas[totalVentas].idVenta=++contadorVentas;
+            ventas[totalVentas].producto=nombre;
+            ventas[totalVentas].cantidad=cantidad;
+            ventas[totalVentas].precioTotal=productos[i].precio*cantidad;
+            totalVentas++;
+            cout<<"Venta registrada con ID: "<<contadorVentas<<endl;
+            return;
+        }
+    }
+    cout<<"Producto no encontrado. Venta no registrada."<<endl;
+}
 
 int main() 
 {
@@ -98,6 +133,7 @@ int main()
         cout<<"C. Buscar producto\n";
         cout<<"D. Actualizar producto\n";
         cout<<"E. Eliminar producto\n";
+        cout<<"F. Registrar venta\n";
         cout<<"S. Salir\n";
         cout<<"Opcion: ";
         cin >> opcion;
@@ -112,6 +148,8 @@ int main()
             case 'D': actualizarProducto(); 
             break;
             case 'E': eliminarProducto(); 
+            break;
+            case 'F': registrarVenta(); 
             break;
             case 'S': cout<<"Saliendo...\n"; 
             break;
