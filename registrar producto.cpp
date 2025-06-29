@@ -23,6 +23,13 @@ void registrarProducto()
     cin>>productos[totalProductos].precio;
     totalProductos++;
 }
+void listarProductos()
+{
+    for(int i=0;i<totalProductos;i++)
+    {
+        cout<<i+1<<". "<<productos[i].nombre<<" - $"<<productos[i].precio<<endl;
+    }
+}
 
 int main() 
 {
@@ -30,17 +37,20 @@ int main()
     do {
         cout<<"\nMenu:\n";
         cout<<"A. Registrar producto\n";
+        cout<<"B. Listar productos\n";
         cout<<"S. Salir\n";
         cout<<"Opcion: ";
         cin >> opcion;
         opcion=toupper(opcion);
         switch (opcion) {
             case 'A': registrarProducto(); 
-			break;
+            break;
+            case 'B': listarProductos(); 
+            break;
             case 'S': cout<<"Saliendo...\n"; 
-			break;
+            break;
             default: cout<<"Opcion no valida.\n"; 
-			break;
+            break;
         }
     } while(opcion != 'S');
     return 0;
